@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: prom-deployment-v2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: prom-app-v2
