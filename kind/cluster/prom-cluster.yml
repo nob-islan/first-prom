@@ -1,0 +1,17 @@
+# クラスタ構築
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  # コントロールプレーン1台
+  - role: control-plane
+    extraPortMappings:
+      # ServiceのnodePortとして指定するポート
+      - containerPort: 30080 # for ArgoCD
+        hostPort: 30070
+      - containerPort: 30090 # for v1
+        hostPort: 30080
+      - containerPort: 30091 # for v2
+        hostPort: 30081
+  # ワーカーノード2台
+  - role: worker
+  - role: worker
